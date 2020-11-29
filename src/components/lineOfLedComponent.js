@@ -2,7 +2,6 @@ import Led from "./ledComponent";
 import React from "react";
 import Box from '@material-ui/core/Box';
 import {NUMBER_OF_HORIZONTAL_LEDS} from "../constants";
-import {useDispatch} from "react-redux";
 
 const MD_COLOR = "#77fc03";
 const MG_COLOR = "#0398fc";
