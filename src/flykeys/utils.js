@@ -80,13 +80,12 @@ export function songFromFlykeys(data) {
     }
 
     // @ts-ignore
-    const [tempoStr, scaleStr, speedStr] = lines.shift().split(';');
+    const [scaleStr, speedStr] = lines.shift().split(';');
 
-    const tempo = parseInt(tempoStr);
     const scale = parseInt(scaleStr);
     const speed = parseInt(speedStr);
 
-    if (!tempo || !scale || !speed) {
+    if (!scale || !speed) {
         alert("Le fichier ne contient pas le bon header!");
         return {};
     }
