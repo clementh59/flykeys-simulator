@@ -80,7 +80,7 @@ export function songFromFlykeys(data) {
     }
 
     // @ts-ignore
-    const [scaleStr, speedStr] = lines.shift().split(';');
+    const [, scaleStr, speedStr] = lines.shift().split(';');
 
     const scale = parseInt(scaleStr);
     const speed = parseInt(speedStr);
