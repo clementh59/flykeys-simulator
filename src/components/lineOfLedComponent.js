@@ -2,9 +2,12 @@ import Led from "./ledComponent";
 import React from "react";
 import Box from '@material-ui/core/Box';
 import {NUMBER_OF_HORIZONTAL_LEDS} from "../constants";
+import {MD, MD_RP, MG, MG_RP} from "../constants/constants";
 
 const MD_COLOR = "#77fc03";
 const MG_COLOR = "#0398fc";
+const MD_RP_COLOR = "#fff";
+const MG_RP_COLOR = "#fff";
 const NOT_LIGHT_COLOR = "#666";
 
 export default class LineOfLed extends React.Component {
@@ -30,10 +33,14 @@ export default class LineOfLed extends React.Component {
 
     getColorFromHand = (hand) => {
         switch (hand){
-            case 'MD':
+            case MD:
                 return MD_COLOR;
-            case 'MG':
+            case MG:
                 return MG_COLOR;
+            case MD_RP:
+                return MD_RP_COLOR;
+            case MG_RP:
+                return MG_RP_COLOR;
             default:
                 return NOT_LIGHT_COLOR;
         }

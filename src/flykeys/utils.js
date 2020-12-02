@@ -6,6 +6,7 @@
  */
 import {Note} from "../notes/note";
 import {NUMBER_OF_HORIZONTAL_LEDS} from "../constants";
+import {MD_RP, MG_RP, SUFFIX_RP} from "../constants/constants";
 
 export function buildDefaultLayerMatrix() {
     return Array.from(Array(NUMBER_OF_HORIZONTAL_LEDS).keys()).map(item => {
@@ -14,6 +15,59 @@ export function buildDefaultLayerMatrix() {
             color: '',
         };
     });
+}
+
+/**
+ *
+ * @param led
+ * @returns {boolean} - true if the color is a R&P color, false otherwise
+ */
+const isRAndP = (led) => {
+    return led.color === MD_RP || led.color === MG_RP;
+}
+
+/**
+ *
+ * @param led
+ * @returns {boolean} - true if the color isn't empty, false otherwise
+ */
+const isOn = (led) => {
+    return led.color !== "";
+}
+
+/**
+ * set the note with the id passed in param to R&P
+ * @param matrix
+ * @param id - the id of the note to set to RP
+ * @param layer - the layer of the first note to set
+ * @param key - the key of the note
+ */
+const setIsRP = (matrix, id, layer, key) => {
+    while (layer < matrix.length && matrix[layer][key].id === id) {
+        matrix[layer][key].color += SUFFIX_RP;
+        layer++;
+    }
+}
+
+/**
+ * if a note needs to be R&P, it is configured in this function
+ * @param {Array} matrix - the led matrix
+ */
+const setAllTheRPForMatrix = (matrix) => {
+    for (let layer = 1; layer < matrix.length; layer++) {
+        for (let led = 0; led < NUMBER_OF_HORIZONTAL_LEDS; led++) {
+            // si deux leds d'affilée sont allumées
+            if (isOn(matrix[layer - 1][led]) && isOn(matrix[layer][led])) {
+                // si les notes sont deux notes différentes
+                if (matrix[layer - 1][led].id !== matrix[layer][led].id) {
+                    // et que la note d'en dessous n'est pas déjà R&P
+                    if (!isRAndP(matrix[layer - 1][led])) {
+                        setIsRP(matrix, matrix[layer][led].id, layer, led);
+                    }
+                }
+            }
+        }
+    }
 }
 
 export function songFromFlykeys(data) {
@@ -65,6 +119,8 @@ export function songFromFlykeys(data) {
             ledMatrix[i][note.key] = {id: note.id, color: note.color};
         }
     });
+
+    setAllTheRPForMatrix(ledMatrix);
 
     return {
         speed: speed,
