@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setNotesToPlay} from "../store/actions";
 
 //const initValueOfTick = -NUMBER_OF_VERTICAL_LAYERS-1;
-const initValueOfTick = 40;
+const initValueOfTick = 0;
 
 export default function LedMatrix({player, speed, play}) {
 
