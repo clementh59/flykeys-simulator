@@ -95,7 +95,7 @@ export function songFromFlykeys(data) {
     lines.forEach((line) => {
         const [keyStr, tickOnStr, tickOffStr, color] = line.split(' ');
 
-        const key = parseInt(keyStr);
+        const key = parseInt(keyStr) - 15;
         const tickOn = parseInt(tickOnStr);
         const tickOff = parseInt(tickOffStr);
 
