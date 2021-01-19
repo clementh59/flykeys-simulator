@@ -1,20 +1,24 @@
 import React from "react";
+import {NOT_LIGHT_COLOR} from "./lineOfLedComponent";
 
 export default function Led({ledSize, horizontalMargin, color}) {
 
     return (
         <div
             style={{
-                width: ledSize,
-                height: ledSize,
-                borderRadius: ledSize,
-                backgroundColor: color,
-                marginLeft: horizontalMargin,
-                marginRight: horizontalMargin,
+                backgroundColor: NOT_LIGHT_COLOR,
             }}
-            onClick={onclick}
         >
-
+            <div
+                style={{
+                    width: ledSize,
+                    height: ledSize,
+                    backgroundColor: color,
+                    marginLeft: horizontalMargin,
+                    marginRight: horizontalMargin,
+                }}
+                onClick={onclick}
+            />
         </div>
     );
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {NUMBER_OF_VERTICAL_LAYERS} from "../constants";
-import LineOfLed from "./lineOfLedComponent";
+import LineOfLed, {NOT_LIGHT_COLOR} from "./lineOfLedComponent";
 import {buildDefaultLayerMatrix} from "../flykeys/utils";
 import {useDispatch, useSelector} from "react-redux";
 import {setNotesToPlay} from "../store/actions";
@@ -58,9 +58,13 @@ export default function LedMatrix({player, speed, play}) {
     return (
         <div>
             <span style={{color:'white'}}>tick actuel : {tick}</span>
-            {Array.from(Array(NUMBER_OF_VERTICAL_LAYERS).keys()).map(item => (
-                <LineOfLed key={item} ledColors={actualLedMatrix[NUMBER_OF_VERTICAL_LAYERS-item-1]}/>
-            ))}
+            <div
+                style={{backgroundColor: NOT_LIGHT_COLOR}}
+            >
+                {Array.from(Array(NUMBER_OF_VERTICAL_LAYERS).keys()).map(item => (
+                    <LineOfLed key={item} ledColors={actualLedMatrix[NUMBER_OF_VERTICAL_LAYERS-item-1]}/>
+                ))}
+            </div>
         </div>
     );
 }

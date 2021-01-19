@@ -8,7 +8,7 @@ const MD_COLOR = "#77fc03";
 const MG_COLOR = "#0398fc";
 const MD_RP_COLOR = "#fff";
 const MG_RP_COLOR = "#fff";
-const NOT_LIGHT_COLOR = "#666";
+export const NOT_LIGHT_COLOR = "#624c30";
 
 export default class LineOfLed extends React.Component {
 
@@ -32,7 +32,7 @@ export default class LineOfLed extends React.Component {
     }
 
     getColorFromHand = (hand) => {
-        switch (hand){
+        switch (hand) {
             case MD:
                 return MD_COLOR;
             case MG:
@@ -49,11 +49,12 @@ export default class LineOfLed extends React.Component {
     render() {
 
         const ledPlace = this.state.width / NUMBER_OF_HORIZONTAL_LEDS;
-        const ledSize = ledPlace * 2 / 3 + "px";
-        const horizontalMargin = ledPlace / 6 + "px";
+        const ledSize = ledPlace * 12 / 14 + "px";
+        const horizontalMargin = ledPlace / 14 + "px";
 
         return (
-            <Box display="flex" flexDirection="row" style={{marginTop:"7px"}}>
+
+            <Box display="flex" flexDirection="row" style={{marginTop: horizontalMargin}}>
                 {Array.from(Array(NUMBER_OF_HORIZONTAL_LEDS).keys()).map((item) => {
                     let color = this.props.ledColors[item].color;
                     return (<Led key={item} num={item} ledSize={ledSize} horizontalMargin={horizontalMargin}
