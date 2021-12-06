@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Flykeys simulator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Flykeys simulator was designed to reproduce the behavior of the Flykeys object (learning mode only).
 
-## Available Scripts
+# How it works
 
-In the project directory, you can run:
+The simulator reads the file in input and shows exactly what the Flykeys object would show with this same file as input.
+![simulator](https://github.com/clementh59/flykeys-simulator/blob/master/res/simulator.png)
 
-### `npm start`
+The color of each note matches exactly what the object would show. So a green note means that the note has to be played with the right hand and a blue one has to be played with the left hand.
+A white note means that the right hand has to release the key and push it again and an orange one has the same signification but for the right hand.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# How to run 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Go in the root of the project and run:
+- `npm run start`
 
-### `npm test`
+Alternatively, you can go to the hosted version [here](https://flykeys-simulator.netlify.app).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then, select a Flykeys file. You can find an example in the `example` folder.
 
-### `npm run build`
+Once you selected a file, you'll be able to run the simulator. Just click on play to run it.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can also update the speed of the music by using the appropriate slider.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Go directly at a given tick
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A 'move' function has been exported to be able to go at the tick you want. You can use it in the console of your browser. 
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For example, if you want to go at tick 400, enter this in the console:
+```js
+setTick(400)
+```
